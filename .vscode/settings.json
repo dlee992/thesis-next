@@ -1,3 +1,20 @@
 {
-    "screencastMode.fontSize": 20
+    "editor.fontSize": 15,
+    "screencastMode.fontSize": 20,
+    "debug.console.fontSize": 11,
+    "terminal.integrated.fontSize": 11,
+    "markdown.preview.fontSize": 12,
+
+    "latex-workshop.latex.recipe.default": "latexmk (xelatex)",
+    "latex-workshop.latex.tools": [{
+        "name": "latexmk (xelatex)",
+        "command": "latexmk",
+        "args": [
+            "-xelatex",
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+        ]
+    }]
 }

@@ -80,7 +80,7 @@
 \punctstyle{plain}
 \RequirePackage{CJKfntef}
 \RequirePackage{ulem}
-\renewcommand*{\CJKunderlinecolor}{\color{black}}
+%\renewcommand*{\CJKunderlinecolor}{\color{black}}
 \RequirePackage[hyphens]{url}
 \RequirePackage{hyperref}
 \hypersetup{%
