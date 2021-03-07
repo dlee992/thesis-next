@@ -1,0 +1,103 @@
+\chapter{chapter}
+
+\lipsum[1]
+
+\section{section}\label{sec:rate}
+\lipsum[1]
+\subsection{subsection}
+\lipsum[1]
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{./figure/github.jpg}
+  \caption{单图示例}
+  \label{fig:system}
+\end{figure}
+
+\chapter{算法}
+
+\begin{algorithm}[htbp]
+  \caption{算法名字}
+  \label{alg:alg1}
+  \begin{algorithmic}[1]
+        \REQUIRE 这是输入
+        \ENSURE 这是输出
+        \WHILE {flag}
+		      \STATE 这是语句
+        \ENDWHILE
+  \end{algorithmic}
+\end{algorithm}
+
+\chapter{实验验证}
+
+实验硬件设备如图\ref{img:1}所示。
+\begin{figure}[htbp]
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{./figure/github.jpg}
+\caption{实验硬件设备总览}
+\label{img:1}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{./figure/github.jpg}
+\caption{实验测量示意图}
+\label{img:2}
+\end{minipage}
+\end{figure}
+
+图\ref{fig:sub}所示子图\ref{subfig:a}和子图\ref{subfig:b}。
+\begin{figure}[H]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\textwidth]{./figure/github.jpg}
+		\caption{子图}
+		\label{subfig:a}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\textwidth]{./figure/github.jpg}
+		\caption{子图}
+		\label{subfig:b}
+	\end{subfigure}
+\caption{子图样例}
+\label{fig:sub}
+\end{figure}
+
+\chapter{总结与展望}
+\lipsum[1]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 致谢，应放在《结论》之后
+\begin{acknowledgement}
+%thanks
+\lipsum[1]
+
+\end{acknowledgement}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% 参考文献。应放在\backmatter之前。
+% 推荐使用BibTeX，若不使用BibTeX时注释掉下面一句。
+%\nocite{*}
+\bibliography{sample}
+
+
+% 附录，必须放在参考文献后，backmatter前
+\appendix
+\chapter{附录代码}\label{app:1}
+\section{main函数}
+\begin{lstlisting}[language=C]
+int main()
+{
+	return 0;
+}
+\end{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 书籍附件
+\backmatter

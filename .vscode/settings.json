@@ -1,20 +1,71 @@
 {
-    "editor.fontSize": 15,
+    "editor.fontSize": 18,
     "screencastMode.fontSize": 20,
     "debug.console.fontSize": 11,
     "terminal.integrated.fontSize": 11,
     "markdown.preview.fontSize": 12,
 
-    "latex-workshop.latex.recipe.default": "latexmk (xelatex)",
-    "latex-workshop.latex.tools": [{
-        "name": "latexmk (xelatex)",
-        "command": "latexmk",
-        "args": [
-            "-xelatex",
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
-        ]
-    }]
+    "latex-workshop.latex.tools": [
+        {
+            // 编译工具和命令
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xe->bib->xe->xe",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ],
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdf->bib->pdf->pdf",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
 }
