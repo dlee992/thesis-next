@@ -1,8 +1,4 @@
-% !TEX program = xelatex
-% !Mode:: "TeX:UTF-8"
-%# -*- coding:utf-8 -*-
-
-\documentclass[master, macfonts, twoside]{njuthesis}
+\documentclass[master, macfonts]{njuthesis}
 
 \newcommand*{\CJKunderlinecolor}{\color{black}}
 \newcommand*{\CJKunderline}[1]{\uline{#1}}
@@ -10,6 +6,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % set up labelformat and labelsep for subfigure 详见： http://www.latexstudio.net/archives/8652.html
 \captionsetup[subfigure]{labelformat=simple, labelsep=space}
+\usepackage{subcaption}
+
+% 反复出现的概念或名称
+\newcommand{\wa}{WARDER}
+\newcommand{\wasc}{WARDER-sc}
+\newcommand{\wamc}{WARDER-mc}
+\newcommand{\wawc}{WARDER-wc}
+
+\newcommand{\sg}{SGUARD}
+\newcommand{\cu}{CUSTODES}
+\newcommand{\uc}{UCheck}
+\newcommand{\di}{Dimension}
+\newcommand{\am}{AmCheck}
+\newcommand{\ca}{CACheck}
+
+% 三个优化方法的专有名词
+\newcommand{\scvp}{单个单元格的有效性属性}
+\newcommand{\mcvp}{多个单元格的有效性属性}
+\newcommand{\wcvp}{整类的有效性属性}
+
+% 实验中出现的数据指称
+\newcommand{\prd}{\textit{precision_d}}
+\newcommand{\fm}{$F\text{-}measure$}
+\newcommand{\fmd}{$F\text{-}measure_d$}
+\newcommand{\fmc}{$F\text{-}measure_c$}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 设置论文的中文封面
@@ -116,6 +137,7 @@
 \input{chapters/chapter7.tex}
 
 \input{chapters/acknowledge.tex}
+
 \bibliography{sample}
 
 \backmatter
