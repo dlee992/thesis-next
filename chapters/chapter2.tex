@@ -1,15 +1,40 @@
 \chapter{相关工作}
 
-\section{电子表格的缺陷分类}
+\section{电子表格的缺陷问题}
 
+电子表格的质量问题从电子表格软件诞生以来就一直受到学界的持续关注。
+电子表格中也的确包含各种各样的缺陷\cite{powell2008critical,rajalingham2008classification,panko2006facing,panko2008spreadsheet}，并且这些缺陷严重时甚至会对用户造成巨大的经济损失\cite{reinhart2010growth,panko2016we}。
+
+1993年，Galletta等人\cite{galletta1993empirical}针对电子表格进行了实证研究，在报告中指出甚至是电子表格专家在识别电子表格缺陷上比新手也没有更加出色。
+这表明，电子表格缺陷有些时候是隐性的且不易发现，这也正表明识别电子表格缺陷是一个有价值的研究方向。
+2010年，Nixon 和 O'Hara\cite{nixon2010spreadsheet}指出使用专门开发的电子表格审计软件有助于显著提升电子表格质量。
+Anderson\cite{anderson2004comparison}明确指出使用这类辅助审计软件的有效性，但同时提出仍有大量电子表格缺陷没有得到应有的关注。
+
+为了更好地理解电子表格的数据关系和提升电子表格的数据可靠性，Mittermeir 等人~\cite{clermont2003auditing,mittermeir2002finding}提出三类“逻辑区域”用于将公式单元格按照使用意图进行分类，分别满足三种等价形式，复制等价性，逻辑等价性和结构等价性。
+这样的分类方式有助于电子表格用户更好地理解电子表格内的数据计算模型，同时比较容易的避免和监测有缺陷的单元格。
+
+\subsection{缺陷分类}
+
+
+% \subsection{电子表格的逻辑区域}
+
+% 这里简要介绍一下 Mittermeir 等人 \cite{clermont2003auditing,mittermeir2002finding} 对电子表格公式的分类方法，后续很多的缺陷检测技术的核心设计思路都受到了该分类方法的启发。
 
 \section{电子表格的缺陷预防}
+
 
 
 \section{电子表格的缺陷检测}
 
 
-\section{电子表格的缺陷修复}%？？？
+\subsection{基于规则的检测技术}
 
 
-% 电子表格的开发利器
+\subsection{基于学习的检测技术}
+
+
+
+\section{电子表格的缺陷修复}
+
+
+\section{电子表格的功能增强}
