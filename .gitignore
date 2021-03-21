@@ -37,3 +37,4 @@
 *.thm
 .DS_Store
 *.bak
+*.synctex(busy)
