@@ -1,3 +1,5 @@
+*.bcf
+*.xml
 *.fls
 *.hd
 *.cmds

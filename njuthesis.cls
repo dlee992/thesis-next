@@ -656,8 +656,8 @@
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
 
-%\bibliographystyle{gbt7714-2005}
-\bibliographystyle{plain}
+\bibliographystyle{gbt7714-numerical}
+%\bibliographystyle{plain}
 %\setcitestyle{super,square}
 \setcitestyle{square}
 \renewcommand\NAT@citesuper[3]{%

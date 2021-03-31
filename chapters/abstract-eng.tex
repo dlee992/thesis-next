@@ -1,7 +1,24 @@
 \begin{englishabstract}
-Spreadsheets
 
+End-user programming has gained widespread attention and applications, among which, spreadsheets are undoubtedly one of the most popular programming paradigms in end-user programming.
+Spreadsheets are widely accepted by users and are widely used worldwide. 
+They are usually used to store, calculate, and analyze user data. 
+For example, software such as MS Excel and Google Sheet provides users with the convenience of storing data and calculation formulas. 
+However, behind the widespread application of spreadsheet programming paradigms, there are indeed various types of errors and defects hidden in every spreadsheet. 
+In the past ten years, major commercial companies have caused millions of dollars in economic losses because they made mistakes when using spreadsheets.
 
+Therefore, the use of software engineering technology to help end users detect potential defects in spreadsheets has received widespread attention. 
+In the past two decades, a variety of technologies has been proposed to detect various types of explicit errors and implicit defects in spreadsheets. 
+With the iterative update of spreadsheet software, explicit errors have been effectively tested, and how to detect more complex implicit defects has been more extensively studied. 
+Representative existing work can be roughly divided into two categories based on technical ideas: rule-based verification and defect detection technology based on clustering/learning algorithms. The former (representative work CACheck) can usually detect specific types of cell defects with high accuracy according to the precise rules of the design, but the recall rate of the detection is not high relative to the latter; while the latter (representative work CUSTODES) clustering cells according to the syntactic structures and semantic features of cell formulas, thereby greatly improving the detection recall rate. However, compared with the former, the complexity of the spreadsheet itself leads to insufficient preparation for the structure and feature extraction of cell formulas. As a result, the final detection accuracy is not high. 
+
+Taking into account the above shortcomings, in this work we propose a novel technology WARDER, based on CUSTODES's innate adaptive cross-table, cross-layout style learning ability, but at the same time improve it in the relevant and irrelevant cells mixing into the same cluster. The main contributions of this article are as follows:
+
+\begin{enumerate}
+    \item Proposing the spreadsheet defect detection technology WARDER, focusing on the validity properties of the cells and the clusters formed to refine the cell clustering process of CUSTODES, and effectively improve the effectiveness of the spreadsheet defect detection as a whole.
+    \item Using an existing spreadsheet benchmark and a large-scale spreadsheet corpus, WARDER was fully tested and evaluated, and compared with other most popular spreadsheet defect detection technologies. 
+    \item Two visualization tools are implemented: a Java-based visualization tool SGuard, which can compare the detection results of a variety of mainstream technologies; another JavaScript-based Excel plug-in EGuard, using that, you can see instantly and step by step see the detection results of the current spreadsheet, which is convenient for users to confirm and repair formula defects immediately.
+\end{enumerate}
 
 \englishkeywords{Spreadsheet Testing, Cell Clustering, Defect Detection, Validity Checking, Software Engineering}
 
