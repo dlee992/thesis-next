@@ -655,7 +655,9 @@
      {\def\@noitemerr
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
-\bibliographystyle{gbt7714-2005}
+
+%\bibliographystyle{gbt7714-2005}
+\bibliographystyle{plain}
 %\setcitestyle{super,square}
 \setcitestyle{square}
 \renewcommand\NAT@citesuper[3]{%
