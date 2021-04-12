@@ -12,7 +12,7 @@
 
 \sg 工具也是使用 Java 实现的独立于 Excel 的可视化集成工具，也是用 Apache POI 库来读写 Excel 格式的电子表格。
 和\wa 类似，目前只能在 Windows 操作系统下执行。
-\sg 的初始核心代码是由张瑞青开发的，我们额外添加了两个新技术模块，即 \cu-OPT 和 \wa ，并进行了对应的集成编码工作\cite{li2019sguard}。
+\sg 的初始核心代码是由张瑞青开发的，我们额外添加了两个新技术模块，即 \cu-OPT 和 \wa ，并进行了对应的集成编码工作。
 相应的工具介绍主页发布在 GitHub Pages 上 \footnote{https://sheetguard.github.io/sguard/}，其中包含了工具源码链接和介绍性的视频链接，发布在 YouTube \footnote{https://www.youtube.com/watch?v=gNPmMvQVf5Q} 和 Bilibili 网站上。
 
 \sg 的完整实现包含约 10,500 行 Java 代码，其中包含 7,300 行核心代码和 3,200 行图形界面代码。
@@ -30,7 +30,7 @@
     \item 中间的工作表内容展示区域展示了类似于电子表格软件的核心界面，以字母标记的列号（A，B，\dots）和以数字标记的行号（1，2，\dots），每个对应的表格位置显示该工作表的具体内容，即公式，数值或文本，目前不能显示除此以外的模块，比如工作表中插入的图，以及不会保留原工作表的排版风格，只显示每个单元格里的具体内容（特别地，还不支持显示多单元格合并为一个单元格的显示效果）；
     \item 右侧的核心操作区域包含如下几块内容：
         \begin{enumerate}
-            \item 上方罗列了 \sg 工具内部囊括的所有检测技术，共有 6 个检测技术，分别是 \am\cite{dou2014spreadsheet}，\ca\cite{dou2017cacheck}，\cu\cite{cheung2016custodes}，\cu-OPT\footnote{http://sccpu2.cse.ust.hk/custodes/cc2s.html}，\wa\cite{li2019sguard} 和 TableCheck\cite{dou2016detecting}。每个技术名称后面标记了对应论文发表的时间或者该技术更新的最新时间；
+            \item 上方罗列了 \sg 工具内部囊括的所有检测技术，共有 6 个检测技术，分别是 \am\cite{dou2014spreadsheet}，\ca\cite{dou2017cacheck}，\cu\cite{cheung2016custodes}，\cu-OPT\footnote{http://sccpu2.cse.ust.hk/custodes/cc2s.html}，\wa 和 TableCheck\cite{dou2016detecting}。每个技术名称后面标记了对应论文发表的时间或者该技术更新的最新时间；
             \item 紧接着向下是 Start analysis 和 Cancel 两个按钮，顾名思义，分别用来开始执行技术对应的代码和取消当前分析过程；
             \item 再往下有两个显示标签，Detective cells 和 Marked clusters，每个运行的技术分别对应一个选项；
             \item 再往下是 Info 栏，展示一些执行信息以及每个电子表格缺陷检测结果汇总，包含每个技术检测到的单元格类数量和有缺陷的单元格数量；
@@ -66,9 +66,11 @@
 %% TODO: hurry
 \section{\eg 插件测试工具}
 
-\eg 插件测试工具使用 JavaScript 语言实现，可在 Excel 软件中直接加载并使用的第三方插件，采用 Microsoft 公司开发的 Office-js \footnote{https://github.com/OfficeDev/office-js} 框架来异步读写和操作 Excel 文件。比\sg 更好地是，只要是 Excel 可以运行的平台，如 Windows，MacOS或者浏览器中，都可以加载我们的\eg 插件，接近于跨平台兼容（暂不支持 Linux 操作系统，因为 Excel 本身就没有 Linux 发行版，未来可能考虑开发和 LibreOffice 兼容的 Linux 版本的 \wa 测试工具）。相应的工具源码发布在 GitHub 上\footnote{https://github.com/dlee992/EGuard}。
+\eg 插件测试工具使用 JavaScript 语言实现，可在 Excel 软件中直接加载并使用的第三方插件，采用 Microsoft 公司开发的 Office-js \footnote{https://github.com/OfficeDev/office-js} 框架来异步读写和操作 Excel 文件。
+比\sg 更好地是，只要是 Excel 可以运行的平台，如 Windows，MacOS 或者浏览器中，都可以加载我们的\eg 插件，接近于跨平台兼容（暂不支持 Linux 操作系统，因为 Excel 本身就没有 Linux 发行版）。
+% 相应的工具源码发布在 GitHub 上\footnote{https://github.com/dlee992/EGuard}。
 
-\eg 测试工具的完整实现包含 \dots 行 JavaScript 代码，其中包含 \dots 行核心功能代码和 \dots 行图形界面代码。
+目前，\eg 测试工具的发布版本为1.0，当前的实现包含月 3100 行 JavaScript 代码，其中包含约 2400 行核心功能代码和约 700 行图形界面代码。
 
 \subsection{界面设计}
 
@@ -82,4 +84,4 @@
 
 \subsection{使用展示}
 
-接下来，我们结合一个简单的工作表例子来展示\eg 的完整使用流程。
+接下来，我们结合一个简单的工作表例子来展示\eg 的完整使用流程。 
