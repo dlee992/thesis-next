@@ -1,28 +1,54 @@
 \begin{englishabstract}
 
 End-user programming has gained widespread attention, in which, spreadsheets are undoubtedly one of the most popular programming paradigms.
-Spreadsheets are usually used to store, calculate, and analyze user data to help users perform data calculations and decision-making plans.
-Since spreadsheets may contain a large amount of data and formula cells, and their structures and layouts vary from person to person, various types of defects may hidden in them.
-Recently, hidden errors in spreadsheets have caused huge economic losses of many financial investment companies.
+%Spreadsheets are usually used to store, calculate, and analyze user data to help users perform data calculations and decision-making plans.
+End-users can organize and store data with spreadsheets in tabular forms.
+Spreadsheets also provide users with the freedom to write formulas to calculate new data.
+%Since spreadsheets may contain a large amount of data and formula cells, and their structures and layouts vary from person to person, various types of defects may hidden in them.
+%Recently, hidden errors in spreadsheets have caused huge economic losses of many financial investment companies.
+However, spreadsheets are not easy to use. 
+They may contain a large amount of data cells that could be dispersed in different regions inside one sheet or even cross multiple sheets. 
+Moreover, novice or even experienced end-users can make common mistakes like writing incorrect formulas or copy-pasting formula cells instead of the concrete data, which will introduce hidden defects into the sheets and easily cause huge economic losses.
 
-It is especially important to use automation technology to help end-users detect errors in spreadsheets.
-Among them, how to automate the detection of spreadsheet defects related to formulas has received the most attention.
-In the past two decades, researchers have proposed various methods to detect formula-related defects.
-The current mainstream methods with better detection results can be divided into two categories based on their technical ideas: rule/pattern-based and clustering/learning-based defect detection technologies.
-The former can usually detect specific types of cell defects with high accuracy based on pre-designed precise rules/patterns, but compared with the latter, the detection recall rate is not satisfactory;
-The latter can cluster cells based on formula features and cell layout features, greatly improving the recall rate of detection, but compared with the former, its feature extraction is not accurate enough due to the complexity of spreadsheets, resulting in unsatisfactory precision performance.
+Automated approaches can help end-users detect those hidden defects, especially those related to incorrect or misuse of formulas. 
+In the past two decades, researchers have proposed various approaches to detect such formula-related defects. 
+There are mainly two categories of approaches: 
+rule/pattern-based and clustering/learning-based. 
+The former requires pre-designed rules or patterns and can detect specific types of defects with high accuracy, 
+but the detection recall rate is relatively lower. 
+The latter clusters cells based on formula features and layout features and can greatly improve the recall rate of detection, 
+but the feature extraction is usually not accurate enough, due to the complexity of spreadsheets, resulting in lower precision.
 
-Considering the above reasons, we proposes a novel technique WARDER based on \cu.
-Although CUSTODES has the ability of adaptive learning across spreadsheets and various layout styles, meantime it has the disadvantage of absorbing related and unrelated cells into the same cluster.
-Through the top-down validity checking of the cell class construction process, it can accurately filter out the cells that are not related to the cell cluster or the whole invalid cell cluster, effectively improving the effectiveness of cell clustering and defect detection.
+%  It is especially important to use automation technology to help end-users detect errors in spreadsheets.
+%  Among them, how to automate the detection of spreadsheet defects related to formulas has received the most attention.
+%  In the past two decades, researchers have proposed various methods to detect formula-related defects.
+%  The current mainstream methods with better detection results can be divided into two categories based on their technical ideas: rule/pattern-based and clustering/learning-based defect detection technologies.
+%  The former can usually detect specific types of cell defects with high accuracy based on pre-designed precise rules/patterns, but compared with the latter, the detection recall rate is not satisfactory;
+%  The latter can cluster cells based on formula features and cell layout features, greatly improving the recall rate of detection, but compared with the former, its feature extraction is not accurate enough due to the complexity of spreadsheets, resulting in unsatisfactory precision performance.
+
+We propose a novel technique WARDER based on CUSTODES, which has the ability of adaptive learning across spreadsheets and various layout styles, 
+but may absorb unrelated cells into the same cluster and decrease the precision. 
+By the bottom-up validity checking of the cell cluster construction process, 
+our WARDER can accurately filter out the cells that are not related to the cell cluster or the whole invalid cell cluster, 
+effectively improving the precision of cell clustering and defect detection.
+
+%  Considering the above reasons, we proposes a novel technique WARDER based on \cu.
+%  Although CUSTODES has the ability of adaptive learning across spreadsheets and various layout styles, meantime it has the disadvantage of absorbing related and unrelated cells into the same cluster.
+%  Through the top-down validity checking of the cell class construction process, it can accurately filter out the cells that are not related to the cell cluster or the whole invalid cell cluster, effectively improving the effectiveness of cell clustering and defect detection.
 
 In summary, the main contributions of this thesis are as follows:
 \begin{enumerate}
-    \item proposing \wa , a spreadsheet cell clustering and defect detection technology, focusing on the validity checking of the cell itself, the relationship between cells, and the entire cell cluster, improving the cell clustering effect of \cu , and improving the spreadsheet The effect of defect detection;
+    \item Proposing WARDER, a spreadsheet cell clustering and defect detection technology. Focusing on the validity checking of the cell itself, the relationship between cells, and the entire cell cluster, WARDER can improve the cell clustering effectiveness of CUSTODES, and improving the effectiveness of defect detection at last;
     
-    \item using a spreadsheet benchmark widely used by related work and a large-scale spreadsheet corpus to fully evaluate \wa , compared with the current most popular other spreadsheet defect detection technologies;
+    \item Evaluating WARDER with a spreadsheet benchmark sampled from EUSES corpus, which is used widely by existing work, and a large-scale spreadsheets corpus named VEnron2. We also compared WARDER with the state-of-the-art defect detection technologies;
     
-    \item implementing two visualization tools: an Excel plug-in EGuard, while operating the Excel worksheet, end-users can see the detection results and execution information of the currently opened worksheet, so that they can quickly check and repair the tool report defects; another integrated visualization tool \sg, which can compare the detection results of a variety of mainstream technologies and display them in a unified manner.
+    \item Implementing two tools: an Excel plug-in EGuard, which allows end-users check the process and results of defects detection and repair the reported defects while they using the Excel worksheet. Another tool is SGuard that can automatically compare and display the detection results of different approaches.
+    
+    %  \item proposing \wa , a spreadsheet cell clustering and defect detection technology, focusing on the validity checking of the cell itself, the relationship between cells, and the entire cell cluster, improving the cell clustering effect of \cu , and improving the spreadsheet The effect of defect detection;
+    
+    %  \item using a spreadsheet benchmark widely used by related work and a large-scale spreadsheet corpus to fully evaluate \wa , compared with the current most popular other spreadsheet defect detection technologies;
+    
+    %  \item implementing two visualization tools: an Excel plug-in EGuard, while operating the Excel worksheet, end-users can see the detection results and execution information of the currently opened worksheet, so that they can quickly check and repair the tool report defects; another integrated visualization tool \sg, which can compare the detection results of a variety of mainstream technologies and display them in a unified manner.
 \end{enumerate}
 
 \englishkeywords{Spreadsheet Detection, Cell Clustering, Defect Detection, Validity Checking, Software Engineering}
