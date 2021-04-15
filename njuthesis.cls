@@ -869,7 +869,7 @@
     \bfseries\kaishu\zihao{3} %中文封面字号
     \def\tabcolsep{1pt}
     \def\arraystretch{1.5}
-	\ifdefempty{\njut@value@title}{\njut@covertable@twolinetitle}{\njut@covertable@onelinetitle}
+	\ifdefempty{\njut@value@title}{\njut@covertable@onelinetitle}{\njut@covertable@twolinetitle}
     \egroup}\\
     \vskip \stretch{1}
     {\bf\kaishu\zihao{4}\njut@value@date}
