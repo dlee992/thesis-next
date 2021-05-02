@@ -1,12 +1,12 @@
 {
-    "editor.fontSize": 15,
+    "editor.fontSize": 17,
     "screencastMode.fontSize": 20,
     "debug.console.fontSize": 20,
     "terminal.integrated.fontSize": 15,
     "markdown.preview.fontSize": 20,
 
-    "latex-workshop.latex.autoBuild.run": "never",
-    // "latex-workshop.latex.recipe.default": "xe->bib->xe->xe",
+    // "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.recipe.default": "xe->bib->xe->xe",
 
     "latex-workshop.latex.tools": [
         {
