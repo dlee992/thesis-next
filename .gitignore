@@ -28,7 +28,7 @@
 *.nlo
 *.out
 *.pdfsync
-*.pdf
+sample.pdf
 *.ps
 *.snm
 *.synctex.gz
