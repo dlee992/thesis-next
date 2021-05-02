@@ -233,30 +233,40 @@ Hermans等人\cite{hermans2010automatically}提出了另一个不同的可视化
 
 \subsection{电子表格的缺陷检测}
 本世纪的前 10 年主要的缺陷检测相关工作，关注于使用类型推导的方法\cite{erwig2002adding,burnett2002testing,ahmad2003type,abraham2004header,abraham2006type,abraham2007ucheck,antoniu2004validating,chambers2009automatic,chambers2010reasoning}来检测电子表格缺陷。
-这类方法的核心思路是借助人工标注或者字符串信息推导出输入单元格的单位信息，进而判断公式中的计算是否符合单位之间的运算法则，类似于普通程序在编译器中进行的静态类型检查。
-Erwig等人\cite{erwig2002adding,abraham2004header}最早把这种单位推导系统引入到电子表格的特定错误检测中来。
-他们根据表头推导策略和用户标注，推导出所有可能的输入单元格单位信息，进而验证公式的单位运算合法性。
+这类方法的核心思路是借助人工标注或者字符串信息推导出数值单元格的类型信息，进而判断公式中的计算是否符合不同类型之间的运算法则，类似于传统程序在编译器中进行的静态类型检查。
+
+Erwig等人\cite{erwig2002adding,abraham2004header}最早把这种类型推导系统引入到电子表格的特定错误检测中来。
+他们依据表头来推导类型信息，并结合用户标注的类型信息，推导出所有可能的数值单元格类型，进而验证公式运算的类型合法性。
+但该方法需要较多的额外信息输入，才能分析出数值单元格的类型，对很多商用电子表格并不适用，因此适用范围较小，能够检测出的缺陷类型也相对较少。
 
 本世纪的 20 年代至今，研究者们更加关注电子表格中与公式相关的缺陷。
 这些电子表格公式缺陷本身未必是错误的，但在未来的软件开发、重构或拓展过程中可能导致错误。
-正如本章第二节所述，Hermans 等人\cite{hermans2012detecting,hermans2012detecting2,hermans2013data}最早开始明确关注于此类公式缺陷。
-Hermans 等人\cite{hermans2012detecting} 提出所谓的“工作表之间的单元格缺陷”。
+
+%------
+正如本章第二节所述，Hermans 等人\cite{hermans2012detecting,hermans2012detecting2,hermans2013data}从2012年开始率先关注此类公式缺陷。
+Hermans等人\cite{hermans2012detecting2}的工作中得到较为深入的分类和讨论。
+Hermans 等人\cite{hermans2012detecting}提出所谓的“工作表之间的单元格缺陷”。
 这类缺陷根据不同工作表之间的依赖关系分析，来识别一些不良使用导致的单元格缺陷。
 比如，一个公式引用了很多另一个工作表中的单元格，那么该公式应当被移动到对应工作表中。
-公式缺陷最早在\cite{hermans2012detecting2}的工作中得到较为深入的分类和讨论。
 后续，Hermans 等人\cite{hermans2013data}提出一个定位电子表格中数据克隆的方法。
 
-窦文生等人\cite{dou2014spreadsheet,dou2017cacheck}提出“单元格阵列”的缺陷检测方法，通过定位同行或同列的具有类似公式语义的连续单元格阵列，进而利用基于组件的程序合成方法在每个单元格阵列中来检测公式异常。
-后来，窦文生等人\cite{dou2016detecting}又提出进行跨表格（table）的克隆检测和单元格缺陷检测，通过识别结构同构的表格，进而对相应位置的单元格进行对比，来寻找公式异常。
+2014年，窦文生等人\cite{dou2014spreadsheet,dou2017cacheck}提出“单元格阵列”的缺陷检测方法，通过定位同行或同列的具有类似公式语义的连续单元格阵列，进而利用基于组件的程序合成方法在每个单元格阵列中来检测公式异常。
+2016年，窦文生等人\cite{dou2016detecting}提出进行跨表格（table）的克隆检测和单元格缺陷检测，通过识别结构同构的表格，进而对相应位置的单元格进行对比，来寻找公式异常。
 
 \input{figure/figure-excelint.tex}
-考虑到前人工作的召回率偏低问题，Cheung等人\cite{cheung2016custodes}提出基于学习和聚类的技术来对单元格进行分类，尽可能保证每个类中的单元格都含有相似的计算语义，进而在类中检测公式缺陷。
+2016年，考虑到前人工作的召回率偏低问题，Cheung等人\cite{cheung2016custodes}提出基于学习和聚类的技术来对单元格进行分类，尽可能保证每个类中的单元格都含有相似的计算语义，进而在类中检测公式缺陷。
 本文即是对 Cheung 等人工作的进一步优化和提升，后面的章节会进一步介绍。
 
-类似地，如图\ref{figure-excelint}所示，ExceLint\cite{Barowy2018excelint}技术通过对公式中蕴含的信息熵分析来给出最合理的电子表格切分方式，最后在每个切分出的单元格矩阵中来进一步检测是否存在公式缺陷。
-Melford\cite{singh2017melford}技术通过提取每个单元格附近的其他单元格属性，利用神经网络模型来寻找异常单元格，它的检测范围是\cu \cite{cheung2016custodes}的真子集。
+2017年，Melford\cite{singh2017melford}技术通过提取每个单元格附近的其他单元格属性，利用神经网络模型来寻找异常单元格，它的检测范围是\cu \cite{cheung2016custodes}的真子集。
+2018年，类似地，如图\ref{figure-excelint}所示，ExceLint\cite{Barowy2018excelint}技术通过对公式中蕴含的信息熵分析来给出最合理的电子表格切分方式，最后在每个切分出的单元格矩阵中来进一步检测是否存在公式缺陷。
 
-\subsection{小结}
+2019年，
+
+2020年，
+
+
+
+% \subsection{小结}
 
 
 % 电子表格的相关工作主要集中在两个研究领域，信息系统和计算机科学领域。

@@ -656,7 +656,8 @@
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
 
-\bibliographystyle{gbt7714-numerical}
+% \bibliographystyle{gbt7714-numerical}
+\bibliographystyle{acm}
 %\bibliographystyle{plain}
 %\setcitestyle{super,square}
 \setcitestyle{square}
