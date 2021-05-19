@@ -1,11 +1,14 @@
 \section{Excel 插件测试工具 EGuard}
 \eg 插件测试工具使用 JavaScript 语言实现，可在 Excel 软件中直接加载并使用的第三方插件，采用 Microsoft Office-js \footnote{https://github.com/OfficeDev/office-js} 框架来异步读写和操作 Excel 文件。
-只要是 Excel 可以运行的平台，如 Windows，MacOS 或者浏览器打开相应的 Excel Onedriver 应用中，都可以加载我们的\eg 插件，接近于跨平台兼容。
+只要是 Excel 可以运行的平台，如 Windows，MacOS 或者在浏览器中打开的 Excel OneDrive 应用上，都可以加载我们的\eg 插件。
 相应的工具源码发布在 GitHub 上\footnote{https://github.com/dlee992/EGuard}。
 
-目前，\eg 测试工具的实现包含约 3100 行 JavaScript、HTML 和 CSS 代码，其中包含约 2400 行核心功能代码和约 700 行图形界面代码，后续还会继续更新到一个更加完善的版本，然后正式发布上线。
+目前，\eg 测试工具的实现包含约 3100 行 JavaScript、HTML 和 CSS 代码，其中包含约 2400 行核心功能代码和约 700 行图形界面代码，后续还会继续更新到一个更加完善的版本，然后发布到 Excel 第三方插件平台上，供任意用户下载使用。
 
-\subsection{代码架构}
+\subsection{EGuard 插件架构}
+\input{figure/eg/eguard-framework.tex}
+
+
 \input{figure/eg/eguard-1.tex}
 \input{figure/eg/eguard-2.tex}
 \input{figure/eg/eguard-3.tex}
