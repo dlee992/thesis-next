@@ -12,6 +12,14 @@
     \item \textbf{研究问题3（独立性）}：\wa 的三个有效性检验方法对缺陷检测的效果提升分别有多大？
 \end{itemize}
 
+\section{\wa 系统实现}
+\wa 技术在实验评估中使用 Java 语言实现，并使用 Apache POI 库 \footnote{https://poi.apache.org} 来读写 Excel 格式的电子表格。
+相应源码发布在 GitHub 网站上 \footnote{https://github.com/dlee992/QRS19-Code} 。
+
+\wa 工具总共包含约 7,300 行 Java 代码，除了包含 \cu 的源代码以外，额外增改了约 2,500 行代码。
+类似于 \cu 的方式，\wa 标记它分析过的电子表格的方法是使用不同的背景色来标注检测到的同一张工作表内的所有单元格类，并通过在单元格右上角添加注释的方式标注含有公式缺陷的单元格的备注信息，包括所在类的信息和具体的公式缺陷种类。
+
+
 \input{chapters/chapter6-2.tex}
 \input{chapters/chapter6-3.tex}
 \input{chapters/chapter6-4.tex}

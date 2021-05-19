@@ -1,4 +1,4 @@
-\documentclass[master, winfonts, twoside]{njuthesis}
+\documentclass[master, macfonts, twoside]{njuthesis}
 
 \newcommand*{\CJKunderlinecolor}{\color{black}}
 \newcommand*{\CJKunderline}[1]{\uline{#1}}
@@ -158,10 +158,12 @@
 
 \input{chapters/chapter1.tex}
 \input{chapters/chapter2.tex}
-\input{chapters/chapter3.tex}
+% 把第三章合并到第四章中去
+% \input{chapters/chapter3.tex}
 \input{chapters/chapter4.tex}
-\input{chapters/chapter5.tex}
+% 交换 5，6 章节的位置，把原 5.1 放到第 6 章开头，添加架构图到原第 5 章中
 \input{chapters/chapter6.tex}
+\input{chapters/chapter5.tex}
 \input{chapters/chapter7.tex}
 
 \input{chapters/acknowledge.tex}

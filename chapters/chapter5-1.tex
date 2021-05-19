@@ -1,0 +1,39 @@
+\section{Excel 插件测试工具 EGuard}
+\eg 插件测试工具使用 JavaScript 语言实现，可在 Excel 软件中直接加载并使用的第三方插件，采用 Microsoft Office-js \footnote{https://github.com/OfficeDev/office-js} 框架来异步读写和操作 Excel 文件。
+只要是 Excel 可以运行的平台，如 Windows，MacOS 或者浏览器打开相应的 Excel Onedriver 应用中，都可以加载我们的\eg 插件，接近于跨平台兼容。
+相应的工具源码发布在 GitHub 上\footnote{https://github.com/dlee992/EGuard}。
+
+目前，\eg 测试工具的实现包含约 3100 行 JavaScript、HTML 和 CSS 代码，其中包含约 2400 行核心功能代码和约 700 行图形界面代码，后续还会继续更新到一个更加完善的版本，然后正式发布上线。
+
+\subsection{代码架构}
+\input{figure/eg/eguard-1.tex}
+\input{figure/eg/eguard-2.tex}
+\input{figure/eg/eguard-3.tex}
+\input{figure/eg/eguard-4.tex}
+
+\subsection{界面设计}
+如图\ref{figure-eg1}所示，在 Excel 软件中，从“插入”菜单栏选择“Office 加载项”按钮，然后选择本地的插件 \eg 进行加载。
+加载完毕后，在“开始”菜单栏的最右侧会显示我们的插件工具图标，点击图标即显示出图\ref{figure-eg1}右侧的内嵌式网页，其标题是“EGuard Testing Process”。
+整个内嵌式网页包含如下三个部分：
+
+\begin{enumerate}
+    \item 上方显示\eg 插件工具的执行流程图，方便终端用户对检测过程有一个直观感性的认识；
+    \item 中间部分为一组选项卡，含有三个执行选项，依次为“\ding{172} Clustering”（两阶段的单元格聚类）、“\ding{173} Cluster Refinement”（基于有效性属性的检验） 和 “\ding{174} Detection”（缺陷检测）；
+    \item 下方是执行信息输出区域，显示执行的流程和对应的时间戳，以及一些帮助终端用户更好地理解检测结果的辅助信息。
+\end{enumerate}
+
+\subsection{使用展示}
+接下来，我们结合一个具体的工作表来展示 \eg 的完整使用流程：
+\begin{enumerate}
+    \item 如图\ref{figure-eg1}所示，首先我们打开一个想要进行测试的 Excel 文件，并切换到想要进行测试的工作表，图中我们打开电子表格“illustrative\_example.xlsx”的工作表“ws1”，按上述方式加载 \eg 插件并在右侧打开嵌入式网页，为了方便观察聚类结果，我们把 Excel 的公式显示选项打开（默认显示 A1 表示法的公式形式）；
+    
+    \item 如图\ref{figure-eg2}所示，点击“\ding{172} Clustering”选项卡按钮，即开始对当前工作表执行强弱特征抽取和两阶段的单元格聚类任务，在插件下方可以看到具体的执行流程包括每个子任务对应的执行时长和一些辅助用户理解的信息。如图所示，最终通过两阶段聚类检测到了 7 个单元格类，并在工作表中用不同的字体颜色标注出来；
+    
+    \item 如图\ref{figure-eg3}所示，点击“\ding{173} Cluster Refinement”选项卡按钮，即在两阶段聚类的基础上执行针对本文提出的\wa 方法，即第四章描述的 3 种基于有效性属性的检验方法。在当前示例中，依据单个单元格有效性属性检验结果，将单元格 B29 从原先的单元格类 \{B29，C29，D29，E29，F29\} 中移除，因为该单元格并不具备和其他单元格类似的除法运算语义，即如果 B29 具有类似公式，则会显示为=(A29$/$A31)$*$100，但 A29 和 A31 都是字符串单元格，无法进行数值运算。从表中可观察到，被移除的单元格会用绿色背景和白色字体标注出来；
+    
+    \item 如图\ref{figure-eg4}所示，点击“\ding{174} Detection”选项卡按钮，即在聚类和检验的基础上，进行类内缺陷检测，在当前工作表中，分别从 4 个单元格类中检测出 9 个有缺陷的单元格，其中 8 个为含有常量替换的公式缺陷的单元格，即 F14、D16、F17、D20、D26、F26、C29 和 E29，以及 1 个引用替换的公式缺陷的单元格 F20。从工作表中可观察到，有缺陷的单元格会用红色背景标注出来，如果原来该单元格就是红色字体，为显示结果清晰，则相应改为白色字体，如单元格 D16；
+    
+    \item 最后，用户可以结合工作表中的标注信息（字体颜色和背景色）和插件下方的日志信息，对工具标记为有公式缺陷的单元格进行检查和修订。
+\end{enumerate}
+
+
