@@ -1,13 +1,29 @@
 \section{Excel 插件测试工具 EGuard}
 \eg 插件测试工具使用 JavaScript 语言实现，可在 Excel 软件中直接加载并使用的第三方插件，采用 Microsoft Office-js \footnote{https://github.com/OfficeDev/office-js} 框架来异步读写和操作 Excel 文件。
-只要是 Excel 可以运行的平台，如 Windows，MacOS 或者在浏览器中打开的 Excel OneDrive 应用上，都可以加载我们的\eg 插件。
+只要是 Excel 可以运行的平台，如 Windows，MacOS 或者在浏览器中打开的 Excel OneDrive 应用上，都可以加载 \eg 插件。
 相应的工具源码发布在 GitHub 上\footnote{https://github.com/dlee992/EGuard}。
 
 目前，\eg 测试工具的实现包含约 3100 行 JavaScript、HTML 和 CSS 代码，其中包含约 2400 行核心功能代码和约 700 行图形界面代码，后续还会继续更新到一个更加完善的版本，然后发布到 Excel 第三方插件平台上，供任意用户下载使用。
 
 \subsection{EGuard 插件架构}
 \input{figure/eg/eguard-framework.tex}
+如图\ref{figure-eg-framework}所示，我们开发的 Excel 插件\eg 的整个运行框架包含两大部分：核心部分就是我们在 node.js 环境下使用 JavaScript 编写的所有核心算法模块；另外就是通过官方的 Office-js 框架实现 node.js 中算法代码和 Excel 中内嵌的插件系统进行异步通信，利用 ES6 中的 async/await 异步操作原语来实现数据交互和线程阻塞，本文的插件\eg 类似于服务器端代码，Excel 软件内如集成了插件系统，其功能类似于一个网页前端，通过 Office-js 框架定义好的通信协议进行数据传输。
 
+插件\eg 的实现中主要包含三个核心模块：
+\begin{itemize}
+    \item \textbf{Excel中加载的插件界面模块}：界面模块主要包含对应于核心算法的三个模块，用户可以通过简单的交互界面，启动算法执行，并观察到每个算法模块的执行结果，并在 Excel 表格中看到对应的标注信息；
+    \item \textbf{核心算法模块}：此模块主要包含方法设计部分提到的三个算法阶段，即单元格聚类，聚类优化和缺陷检测部分，每个算法部分由用户启动执行，执行完成后将额外的聚类或缺陷信息添加到底层数据结构中，并在插件界面中展示该部分的执行结果和细节信息，同时也对 Excel 表格中的单元格进行渲染，给用户比较好的直观提示；
+    \item \textbf{底层数据结构模块}：在 Office-js 框架提供的获取 Excel 原数据的接口基础上，我们在原数据的基础上封装了算法实现和界面交互需要添加的属性，便于与另外两个模块进行交互。
+\end{itemize}
+
+我们简要介绍一下开发 Excel 插件的的单机测试流程：
+\begin{itemize}
+    \item 本工具使用浏览器测试，在https://onedrive.live.com/网址下打开或者新建一个电子表格；
+    \item 在电子表格的菜单栏中依次选择“插入”、“Office 加载项”，并在弹出的“上传加载项”处填入对应的自己开发项目中的加载项清单，即对应的 manifest 文件中；
+    \item 等待插件加载完成，打开浏览器自带的调试功能，开始进行界面和内部功能测试（以 Chrome 浏览器为例，测试日志一般会打印在 Console 窗口下），并进行对应的调试及编码工作。
+\end{itemize}
+
+接下来的两小节将结合具体的界面设计和使用展示来介绍\eg 。
 
 \input{figure/eg/eguard-1.tex}
 \input{figure/eg/eguard-2.tex}
@@ -16,7 +32,7 @@
 
 \subsection{界面设计}
 如图\ref{figure-eg1}所示，在 Excel 软件中，从“插入”菜单栏选择“Office 加载项”按钮，然后选择本地的插件 \eg 进行加载。
-加载完毕后，在“开始”菜单栏的最右侧会显示我们的插件工具图标，点击图标即显示出图\ref{figure-eg1}右侧的内嵌式网页，其标题是“EGuard Testing Process”。
+加载完毕后，在“开始”菜单栏的最右侧会显示本文的插件工具图标，点击图标即显示出图\ref{figure-eg1}右侧的内嵌式网页，其标题是“EGuard Testing Process”。
 整个内嵌式网页包含如下三个部分：
 
 \begin{enumerate}
